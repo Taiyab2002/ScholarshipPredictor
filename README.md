@@ -108,6 +108,11 @@ The final result is presented with a percentage-based assessment so that users c
 
 ---
 
+## Devolopers -
+
+* MD.Taiyab Ur Rahman
+* Tusar Ray
+
 ## 📁 Project Structure
 
 ```text
@@ -130,7 +135,3 @@ ScholarshipPredictor/
 ├── README.md
 └── ...
 
-## Devolopers -
-
-* MD.Taiyab Ur Rahman
-* Tusar Ray
