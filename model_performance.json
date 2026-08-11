@@ -1,0 +1,10 @@
+{
+    "accuracy": 85.0,
+    "precision": 83.78,
+    "recall": 77.5,
+    "f1_score": 80.52,
+    "training_samples": 400,
+    "testing_samples": 100,
+    "dataset_size": 500,
+    "algorithm": "Random Forest Classifier"
+}

@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartScholar | Scholarship Eligibility Predictor</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            min-height: 100vh;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            height: 70px;
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 21px;
+            font-weight: 800;
+            color: #4f46e5;
+        }
+
+        .brand-icon {
+            font-size: 27px;
+        }
+
+        .nav-badge {
+            background: #eef2ff;
+            color: #4f46e5;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* HERO */
+
+        .hero {
+            background: linear-gradient(135deg, #eef2ff, #ffffff);
+            padding: 60px 20px 45px;
+            text-align: center;
+        }
+
+        .hero-icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 14px;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            color: #4f46e5;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            color: #64748b;
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        /* MAIN */
+
+        .container {
+            max-width: 900px;
+            margin: -10px auto 60px;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 22px;
+            padding: 38px;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        /* PROGRESS */
+
+        .progress-container {
+            margin-bottom: 35px;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            color: #64748b;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            width: 25%;
+            background: #4f46e5;
+            border-radius: 20px;
+            transition: width 0.3s ease;
+        }
+
+        /* STEPS */
+
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-title {
+            font-size: 27px;
+            margin-bottom: 8px;
+        }
+
+        .step-description {
+            color: #64748b;
+            margin-bottom: 28px;
+        }
+
+        /* FORM */
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .required {
+            color: #ef4444;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 11px;
+            font-size: 15px;
+            background: white;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        /* BUTTONS */
+
+        .button-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        button {
+            border: none;
+            border-radius: 11px;
+            padding: 14px 25px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-next,
+        .btn-submit {
+            background: #4f46e5;
+            color: white;
+            margin-left: auto;
+        }
+
+        .btn-next:hover,
+        .btn-submit:hover {
+            background: #4338ca;
+            transform: translateY(-1px);
+        }
+
+        .btn-prev {
+            background: #f1f5f9;
+            color: #334155;
+        }
+
+        .btn-prev:hover {
+            background: #e2e8f0;
+        }
+
+        /* INFO BOX */
+
+        .info-box {
+            margin-top: 30px;
+            padding: 17px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            color: #64748b;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 650px) {
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .nav-badge {
+                display: none;
+            }
+
+            .hero {
+                padding: 45px 20px 35px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .card {
+                padding: 25px 20px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .button-row {
+                flex-direction: column;
+            }
+
+            .btn-next,
+            .btn-submit {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="brand">
+        <span class="brand-icon">🎓</span>
+        SmartScholar
+    </div>
+
+    <div class="nav-badge">
+        AI-Powered Assessment
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-icon">
+        🎓
+    </div>
+
+    <h1>
+        Find Your <span>Scholarship Eligibility</span>
+    </h1>
+
+    <p>
+        Answer a few questions about your academic performance,
+        experience and financial background. Our machine learning
+        model will assess your scholarship eligibility.
+    </p>
+
+</section>
+
+
+<!-- FORM -->
+
+<main class="container">
+
+    <div class="card">
+
+        <!-- PROGRESS -->
+
+        <div class="progress-container">
+
+            <div class="progress-info">
+                <span id="stepText">Step 1 of 4</span>
+                <span id="progressPercent">25%</span>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+
+        </div>
+
+
+        <form action="/predict" method="POST" id="scholarshipForm">
+
+
+            <!-- ================= STEP 1 ================= -->
+
+            <div class="step active">
+
+                <h2 class="step-title">
+                    Personal Information
+                </h2>
+
+                <p class="step-description">
+                    Let's start with some basic information about you.
+                </p>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Full Name <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Enter your full name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Age <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="number"
+                            name="age"
+                            min="15"
+                            max="60"
+                            placeholder="Example: 22"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Current Trimester
+                    </label>
+
+                    <select name="semester">
+
+                        <option value="">
+                            Select your current trimester
+                        </option>
+
+                        <option value="1st Year - 1st Semester">
+                            1st Year - 1st Semester
+                        </option>
+
+                        <option value="1st Year - 2nd Semester">
+                            1st Year - 2nd Semester
+                        </option>
+
+                        <option value="1st Year - 3rd Semester">
+                            1st Year - 3rd Semester
+                        </option>
+
+                        <option value="2nd Year - 1st Semester">
+                            2nd Year - 1st Semester
+                        </option>
+
+                        <option value="2nd Year - 2nd Semester">
+                            2nd Year - 2nd Semester
+                        </option>
+
+                        <option value="2nd Year - 3rd Semester">
+                            2nd Year - 3rd Semester
+                        </option>
+
+                        <option value="3rd Year - 1st Semester">
+                            3rd Year - 1st Semester
+                        </option>
+
+                        <option value="3rd Year - 2nd Semester">
+                            3rd Year - 2nd Semester
+                        </option>
+
+                        <option value="3rd Year - 3rd Semester">
+                            3rd Year - 3rd Semester
+                        </option>
+
+                        <option value="4th Year - 1st Semester">
+                            4th Year - 1st Semester
+                        </option>
+
+                        <option value="4th Year - 2nd Semester">
+                            4th Year - 2nd Semester
+                        </option>
+
+                        <option value="4th Year - 3rd Semester">
+                            4th Year - 3rd Semester
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="info-box">
+                    🔒 Your information is used only to generate
+                    the scholarship eligibility prediction.
+                </div>
+
+
+                <div class="button-row">
+
+                    <button
+                        type="button"
+                        class="btn-next"
+                        onclick="nextStep()"
+                    >
+                        Continue →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= STEP 2 ================= -->
+
+            <div class="step">
+
+                <h2 class="step-title">
+                    Academic Information
+                </h2>
+
+                <p class="step-description">
+                    Tell us about your academic performance.
+                </p>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Current CGPA <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="number"
+                            name="cgpa"
+                            min="0"
+                            max="4"
+                            step="0.01"
+                            placeholder="Example: 3.75"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Academic Percentage <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="number"
+                            name="academic_percentage"
+                            min="0"
+                            max="100"
+                            step="0.01"
+                            placeholder="Example: 85"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            IELTS Score <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="number"
+                            name="ielts_score"
+                            min="0"
+                            max="9"
+                            step="0.5"
+                            placeholder="Example: 7.0"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            English Proficiency <span class="required">*</span>
+                        </label>
+
+                        <select name="english_proficiency" required>
+
+                            <option value="">
+                                Select level
+                            </option>
+
+                            <option value="Basic">
+                                Basic
+                            </option>
+
+                            <option value="Intermediate">
+                                Intermediate
+                            </option>
+
+                            <option value="Advanced">
+                                Advanced
+                            </option>
+
+                            <option value="Excellent">
+                                Excellent
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="button-row">
+
+                    <button
+                        type="button"
+                        class="btn-prev"
+                        onclick="prevStep()"
+                    >
+                        ← Back
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn-next"
+                        onclick="nextStep()"
+                    >
+                        Continue →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= STEP 3 ================= -->
+
+            <div class="step">
+
+                <h2 class="step-title">
+                    Experience & Activities
+                </h2>
+
+                <p class="step-description">
+                    Tell us about your achievements and experiences.
+                </p>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Extracurricular Activities
+                        </label>
+
+                        <select name="extracurricular_activities" required>
+
+                            <option value="">
+                                Select level
+                            </option>
+
+                            <option value="None">
+                                None
+                            </option>
+
+                            <option value="Low">
+                                Low
+                            </option>
+
+                            <option value="Medium">
+                                Medium
+                            </option>
+
+                            <option value="High">
+                                High
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Leadership Experience
+                        </label>
+
+                        <select name="leadership_experience" required>
+
+                            <option value="">
+                                Select
+                            </option>
+
+                            <option value="Yes">
+                                Yes
+                            </option>
+
+                            <option value="No">
+                                No
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Internship Experience
+                        </label>
+
+                        <select name="internship_experience" required>
+
+                            <option value="">
+                                Select
+                            </option>
+
+                            <option value="Yes">
+                                Yes
+                            </option>
+
+                            <option value="No">
+                                No
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Volunteer Experience
+                        </label>
+
+                        <select name="volunteer_experience" required>
+
+                            <option value="">
+                                Select
+                            </option>
+
+                            <option value="Yes">
+                                Yes
+                            </option>
+
+                            <option value="No">
+                                No
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Research Paper
+                        </label>
+
+                        <select name="research_paper" required>
+
+                            <option value="">
+                                Select
+                            </option>
+
+                            <option value="Yes">
+                                Yes
+                            </option>
+
+                            <option value="No">
+                                No
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Recommendation Strength
+                        </label>
+
+                        <select name="recommendation_strength" required>
+
+                            <option value="">
+                                Select strength
+                            </option>
+
+                            <option value="Weak">
+                                Weak
+                            </option>
+
+                            <option value="Medium">
+                                Medium
+                            </option>
+
+                            <option value="Strong">
+                                Strong
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="button-row">
+
+                    <button
+                        type="button"
+                        class="btn-prev"
+                        onclick="prevStep()"
+                    >
+                        ← Back
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn-next"
+                        onclick="nextStep()"
+                    >
+                        Continue →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= STEP 4 ================= -->
+
+            <div class="step">
+
+                <h2 class="step-title">
+                    Financial & Study Plans
+                </h2>
+
+                <p class="step-description">
+                    Almost there! Tell us about your financial situation
+                    and intended study destination.
+                </p>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Family Income Level
+                        </label>
+
+                        <select name="family_income_level" required>
+
+                            <option value="">
+                                Select income level
+                            </option>
+
+                            <option value="Low">
+                                Low
+                            </option>
+
+                            <option value="Medium">
+                                Medium
+                            </option>
+
+                            <option value="High">
+                                High
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Financial Need
+                        </label>
+
+                        <select name="financial_need" required>
+
+                            <option value="">
+                                Select
+                            </option>
+
+                            <option value="Low">
+                                Low
+                            </option>
+
+                            <option value="Medium">
+                                Medium
+                            </option>
+
+                            <option value="High">
+                                High
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Intended Study Destination
+                    </label>
+
+                    <select name="study_destination" required>
+
+                        <option value="">
+                            Select destination
+                        </option>
+
+                        <option value="USA">
+                            USA
+                        </option>
+
+                        <option value="UK">
+                            UK
+                        </option>
+
+                        <option value="Canada">
+                            Canada
+                        </option>
+
+                        <option value="Australia">
+                            Australia
+                        </option>
+
+                        <option value="Germany">
+                            Germany
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="info-box">
+                    🤖 Your answers will be analyzed by our
+                    Random Forest machine learning model to
+                    generate the eligibility prediction.
+                </div>
+
+
+                <div class="button-row">
+
+                    <button
+                        type="button"
+                        class="btn-prev"
+                        onclick="prevStep()"
+                    >
+                        ← Back
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn-submit"
+                    >
+                        Predict Eligibility 🎯
+                    </button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</main>
+
+
+<footer>
+    © 2026 SmartScholar · Machine Learning Based Scholarship Predictor
+</footer>
+
+
+<script>
+
+    let currentStep = 0;
+
+    const steps = document.querySelectorAll(".step");
+
+    const progress = document.getElementById("progress");
+
+    const stepText = document.getElementById("stepText");
+
+    const progressPercent =
+        document.getElementById("progressPercent");
+
+
+    function showStep(step) {
+
+        steps.forEach((element, index) => {
+
+            element.classList.toggle(
+                "active",
+                index === step
+            );
+
+        });
+
+
+        const percentage =
+            ((step + 1) / steps.length) * 100;
+
+
+        progress.style.width =
+            percentage + "%";
+
+
+        stepText.textContent =
+            `Step ${step + 1} of ${steps.length}`;
+
+
+        progressPercent.textContent =
+            percentage + "%";
+
+    }
+
+
+    function validateCurrentStep() {
+
+        const inputs =
+            steps[currentStep].querySelectorAll(
+                "input, select"
+            );
+
+
+        for (const input of inputs) {
+
+            if (!input.checkValidity()) {
+
+                input.reportValidity();
+
+                return false;
+
+            }
+
+        }
+
+        return true;
+
+    }
+
+
+    function nextStep() {
+
+        if (!validateCurrentStep()) {
+            return;
+        }
+
+
+        if (currentStep < steps.length - 1) {
+
+            currentStep++;
+
+            showStep(currentStep);
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+
+    }
+
+
+    function prevStep() {
+
+        if (currentStep > 0) {
+
+            currentStep--;
+
+            showStep(currentStep);
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+
+    }
+
+</script>
+
+</body>
+</html>
