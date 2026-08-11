@@ -1,142 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SmartScholar | Scholarship Eligibility</title>
+    <title>SmartScholar | Scholarship Eligibility Predictor</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
 </head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
 
 <nav class="navbar">
 
     <div class="brand">
+
         <div class="brand-mark">
-            <span>🎓</span>
+            SS
         </div>
 
         <div>
-            <div class="brand-name">SmartScholar</div>
-            <div class="brand-subtitle">Eligibility Assessment</div>
+            <div class="brand-name">
+                SmartScholar
+            </div>
+
+            <div class="brand-subtitle">
+                Scholarship Eligibility Predictor
+            </div>
         </div>
+
     </div>
 
     <div class="nav-badge">
-        Scholarship Assistant
+        Eligibility Assessment
     </div>
 
 </nav>
 
 
-<!-- ================= HERO ================= -->
+<!-- =========================================================
+     HERO
+========================================================= -->
 
 <section class="hero">
-
-    <div class="hero-glow glow-one"></div>
-    <div class="hero-glow glow-two"></div>
 
     <div class="hero-content">
 
         <div class="hero-badge">
             <span class="status-dot"></span>
-            Scholarship Eligibility Check
+            Smart Scholarship Assessment
         </div>
 
         <h1>
-            Discover Your
+            Find Your
             <span>Scholarship Eligibility</span>
         </h1>
 
         <p>
-            Answer a few questions about your academic background,
-            experiences and financial situation to receive your
-            personalized eligibility result.
+            Answer a few questions about your academic performance,
+            experience and financial background to assess your
+            scholarship eligibility.
         </p>
 
         <div class="hero-features">
 
             <div class="hero-feature">
                 <span>✓</span>
-                Quick assessment
+                Quick Assessment
             </div>
 
             <div class="hero-feature">
                 <span>✓</span>
-                Simple questionnaire
+                Simple Questions
             </div>
 
             <div class="hero-feature">
                 <span>✓</span>
-                Instant result
+                Instant Result
             </div>
 
         </div>
 
     </div>
 
+    <div class="hero-glow glow-one"></div>
+    <div class="hero-glow glow-two"></div>
+
 </section>
 
 
-<!-- ================= MAIN ================= -->
+<!-- =========================================================
+     MAIN
+========================================================= -->
 
 <main class="container">
 
     <div class="assessment-card">
 
-        <!-- Progress -->
+        <!-- =====================================================
+             PROGRESS
+        ====================================================== -->
 
         <div class="progress-section">
 
             <div class="progress-header">
 
                 <div>
-                    <span class="progress-label">Assessment Progress</span>
-                    <span class="progress-step" id="stepText">
+
+                    <span class="progress-label">
+                        Scholarship Assessment
+                    </span>
+
+                    <span
+                        class="progress-step"
+                        id="stepText">
                         Step 1 of 4
                     </span>
+
                 </div>
 
-                <span class="progress-percent" id="progressPercent">
+                <span
+                    class="progress-percent"
+                    id="progressPercent">
                     25%
                 </span>
 
             </div>
 
             <div class="progress-track">
-                <div class="progress-fill" id="progress"></div>
+
+                <div
+                    class="progress-fill"
+                    id="progress">
+                </div>
+
             </div>
+
+
+            <!-- STEP INDICATORS -->
 
             <div class="step-indicators">
 
-                <div class="step-indicator active" data-step="0">
+                <div class="step-indicator active">
+
                     <span>1</span>
-                    <small>Personal</small>
+
+                    <small>
+                        Personal
+                    </small>
+
                 </div>
+
 
                 <div class="indicator-line"></div>
 
-                <div class="step-indicator" data-step="1">
+
+                <div class="step-indicator">
+
                     <span>2</span>
-                    <small>Academic</small>
+
+                    <small>
+                        Academic
+                    </small>
+
                 </div>
+
 
                 <div class="indicator-line"></div>
 
-                <div class="step-indicator" data-step="2">
+
+                <div class="step-indicator">
+
                     <span>3</span>
-                    <small>Experience</small>
+
+                    <small>
+                        Experience
+                    </small>
+
                 </div>
+
 
                 <div class="indicator-line"></div>
 
-                <div class="step-indicator" data-step="3">
+
+                <div class="step-indicator">
+
                     <span>4</span>
-                    <small>Financial</small>
+
+                    <small>
+                        Financial
+                    </small>
+
                 </div>
 
             </div>
@@ -144,27 +205,40 @@
         </div>
 
 
-        <!-- ================= FORM ================= -->
+        <!-- =====================================================
+             FORM
+        ====================================================== -->
 
-        <form action="/predict" method="POST" id="scholarshipForm">
+        <form
+            action="/predict"
+            method="POST"
+            id="scholarshipForm"
+            novalidate
+        >
 
 
-            <!-- ================= STEP 1 ================= -->
+            <!-- =================================================
+                 STEP 1
+            ================================================== -->
 
-            <section class="step active">
+            <div class="step active">
 
                 <div class="section-heading">
 
                     <div class="section-icon">
-                        👤
+                        01
                     </div>
 
                     <div>
-                        <h2>Personal Information</h2>
+
+                        <h2>
+                            Personal Information
+                        </h2>
 
                         <p>
-                            Tell us a little about yourself to get started.
+                            Let's start with some basic information about you.
                         </p>
+
                     </div>
 
                 </div>
@@ -172,45 +246,65 @@
 
                 <div class="form-grid">
 
+
+                    <!-- NAME -->
+
                     <div class="form-group">
 
-                        <label>
+                        <label for="name">
                             Full Name
                             <span class="required">*</span>
                         </label>
 
                         <div class="input-wrapper">
-                            <span class="input-icon">👤</span>
 
                             <input
                                 type="text"
                                 name="name"
+                                id="name"
                                 placeholder="Enter your full name"
+                                autocomplete="name"
+                                maxlength="80"
                                 required
                             >
+
+                        </div>
+
+                        <div
+                            class="error-message"
+                            id="nameError">
                         </div>
 
                     </div>
 
 
+                    <!-- AGE -->
+
                     <div class="form-group">
 
-                        <label>
+                        <label for="age">
                             Age
                             <span class="required">*</span>
                         </label>
 
                         <div class="input-wrapper">
-                            <span class="input-icon">🎂</span>
 
                             <input
                                 type="number"
                                 name="age"
+                                id="age"
                                 min="15"
                                 max="60"
+                                step="1"
                                 placeholder="Example: 22"
                                 required
                             >
+
+                        </div>
+
+                        <div
+                            class="error-message"
+                            id="ageError">
                         </div>
 
                     </div>
@@ -218,17 +312,22 @@
                 </div>
 
 
+                <!-- SEMESTER -->
+
                 <div class="form-group">
 
-                    <label>
-                        Current Trimester
+                    <label for="semester">
+                        Current Semester
+                        <span class="required">*</span>
                     </label>
 
                     <div class="select-wrapper">
 
-                        <span class="input-icon">📚</span>
-
-                        <select name="semester">
+                        <select
+                            name="semester"
+                            id="semester"
+                            required
+                        >
 
                             <option value="">
                                 Select your current semester
@@ -286,20 +385,26 @@
 
                     </div>
 
+                    <div
+                        class="error-message"
+                        id="semesterError">
+                    </div>
+
                 </div>
 
 
                 <div class="notice-box">
 
-                    <div class="notice-icon">🔒</div>
+                    <div class="notice-content">
 
-                    <div>
-                        <strong>Your information matters</strong>
+                        <strong>
+                            Please provide accurate information.
+                        </strong>
 
                         <p>
-                            Your responses are used only to generate
-                            your scholarship eligibility result.
+                            Your answers will be used to assess your scholarship eligibility.
                         </p>
+
                     </div>
 
                 </div>
@@ -318,25 +423,31 @@
 
                 </div>
 
-            </section>
+            </div>
 
 
-            <!-- ================= STEP 2 ================= -->
+            <!-- =================================================
+                 STEP 2
+            ================================================== -->
 
-            <section class="step">
+            <div class="step">
 
                 <div class="section-heading">
 
                     <div class="section-icon">
-                        📖
+                        02
                     </div>
 
                     <div>
-                        <h2>Academic Information</h2>
+
+                        <h2>
+                            Academic Information
+                        </h2>
 
                         <p>
-                            Tell us about your current academic performance.
+                            Tell us about your academic performance.
                         </p>
+
                     </div>
 
                 </div>
@@ -344,53 +455,58 @@
 
                 <div class="form-grid">
 
+
+                    <!-- CGPA -->
+
                     <div class="form-group">
 
-                        <label>
+                        <label for="cgpa">
                             Current CGPA
                             <span class="required">*</span>
                         </label>
 
-                        <div class="input-wrapper">
+                        <input
+                            type="number"
+                            name="cgpa"
+                            id="cgpa"
+                            min="0"
+                            max="4"
+                            step="0.01"
+                            placeholder="Example: 3.75"
+                            required
+                        >
 
-                            <span class="input-icon">📊</span>
-
-                            <input
-                                type="number"
-                                name="cgpa"
-                                min="0"
-                                max="4"
-                                step="0.01"
-                                placeholder="Example: 3.75"
-                                required
-                            >
-
+                        <div
+                            class="error-message"
+                            id="cgpaError">
                         </div>
 
                     </div>
 
 
+                    <!-- ACADEMIC PERCENTAGE -->
+
                     <div class="form-group">
 
-                        <label>
+                        <label for="academic_percentage">
                             Academic Percentage
                             <span class="required">*</span>
                         </label>
 
-                        <div class="input-wrapper">
+                        <input
+                            type="number"
+                            name="academic_percentage"
+                            id="academic_percentage"
+                            min="0"
+                            max="100"
+                            step="0.01"
+                            placeholder="Example: 85"
+                            required
+                        >
 
-                            <span class="input-icon">📈</span>
-
-                            <input
-                                type="number"
-                                name="academic_percentage"
-                                min="0"
-                                max="100"
-                                step="0.01"
-                                placeholder="Example: 85"
-                                required
-                            >
-
+                        <div
+                            class="error-message"
+                            id="academic_percentageError">
                         </div>
 
                     </div>
@@ -400,70 +516,75 @@
 
                 <div class="form-grid">
 
+
+                    <!-- IELTS -->
+
                     <div class="form-group">
 
-                        <label>
+                        <label for="ielts_score">
                             IELTS Score
                             <span class="required">*</span>
                         </label>
 
-                        <div class="input-wrapper">
+                        <input
+                            type="number"
+                            name="ielts_score"
+                            id="ielts_score"
+                            min="0"
+                            max="9"
+                            step="0.5"
+                            placeholder="Example: 7.0"
+                            required
+                        >
 
-                            <span class="input-icon">🌐</span>
-
-                            <input
-                                type="number"
-                                name="ielts_score"
-                                min="0"
-                                max="9"
-                                step="0.5"
-                                placeholder="Example: 7.0"
-                                required
-                            >
-
+                        <div
+                            class="error-message"
+                            id="ielts_scoreError">
                         </div>
 
                     </div>
 
 
+                    <!-- ENGLISH -->
+
                     <div class="form-group">
 
-                        <label>
+                        <label for="english_proficiency">
                             English Proficiency
                             <span class="required">*</span>
                         </label>
 
-                        <div class="select-wrapper">
+                        <select
+                            name="english_proficiency"
+                            id="english_proficiency"
+                            required
+                        >
 
-                            <span class="input-icon">💬</span>
+                            <option value="">
+                                Select level
+                            </option>
 
-                            <select
-                                name="english_proficiency"
-                                required
-                            >
+                            <option value="Basic">
+                                Basic
+                            </option>
 
-                                <option value="">
-                                    Select level
-                                </option>
+                            <option value="Intermediate">
+                                Intermediate
+                            </option>
 
-                                <option value="Basic">
-                                    Basic
-                                </option>
+                            <option value="Advanced">
+                                Advanced
+                            </option>
 
-                                <option value="Intermediate">
-                                    Intermediate
-                                </option>
+                            <option value="Excellent">
+                                Excellent
+                            </option>
 
-                                <option value="Advanced">
-                                    Advanced
-                                </option>
+                        </select>
 
-                                <option value="Excellent">
-                                    Excellent
-                                </option>
-
-                            </select>
-
+                        <div
+                            class="error-message"
+                            id="english_proficiencyError">
                         </div>
 
                     </div>
@@ -473,11 +594,8 @@
 
                 <div class="tip-box">
 
-                    <span>💡</span>
-
                     <p>
-                        Make sure your academic information reflects
-                        your most recent results.
+                        Enter your academic values exactly as shown in your official academic records.
                     </p>
 
                 </div>
@@ -490,8 +608,7 @@
                         class="btn-secondary"
                         onclick="prevStep()"
                     >
-                        <span>←</span>
-                        Back
+                        ← Back
                     </button>
 
                     <button
@@ -505,25 +622,31 @@
 
                 </div>
 
-            </section>
+            </div>
 
 
-            <!-- ================= STEP 3 ================= -->
+            <!-- =================================================
+                 STEP 3
+            ================================================== -->
 
-            <section class="step">
+            <div class="step">
 
                 <div class="section-heading">
 
                     <div class="section-icon">
-                        🏆
+                        03
                     </div>
 
                     <div>
-                        <h2>Experience & Activities</h2>
+
+                        <h2>
+                            Experience & Activities
+                        </h2>
 
                         <p>
-                            Share your experiences, achievements and involvement.
+                            Tell us about your achievements and experiences.
                         </p>
+
                     </div>
 
                 </div>
@@ -531,77 +654,84 @@
 
                 <div class="form-grid">
 
+
+                    <!-- EXTRACURRICULAR -->
+
                     <div class="form-group">
 
-                        <label>
+                        <label for="extracurricular_activities">
                             Extracurricular Activities
+                            <span class="required">*</span>
                         </label>
 
-                        <div class="select-wrapper">
+                        <select
+                            name="extracurricular_activities"
+                            id="extracurricular_activities"
+                            required
+                        >
 
-                            <span class="input-icon">🎨</span>
+                            <option value="">
+                                Select level
+                            </option>
 
-                            <select
-                                name="extracurricular_activities"
-                                required
-                            >
+                            <option value="None">
+                                None
+                            </option>
 
-                                <option value="">
-                                    Select level
-                                </option>
+                            <option value="Low">
+                                Low
+                            </option>
 
-                                <option value="None">
-                                    None
-                                </option>
+                            <option value="Medium">
+                                Medium
+                            </option>
 
-                                <option value="Low">
-                                    Low
-                                </option>
+                            <option value="High">
+                                High
+                            </option>
 
-                                <option value="Medium">
-                                    Medium
-                                </option>
+                        </select>
 
-                                <option value="High">
-                                    High
-                                </option>
-
-                            </select>
-
+                        <div
+                            class="error-message"
+                            id="extracurricular_activitiesError">
                         </div>
 
                     </div>
 
 
+                    <!-- LEADERSHIP -->
+
                     <div class="form-group">
 
-                        <label>
+                        <label for="leadership_experience">
                             Leadership Experience
+                            <span class="required">*</span>
                         </label>
 
-                        <div class="select-wrapper">
+                        <select
+                            name="leadership_experience"
+                            id="leadership_experience"
+                            required
+                        >
 
-                            <span class="input-icon">👑</span>
+                            <option value="">
+                                Select
+                            </option>
 
-                            <select
-                                name="leadership_experience"
-                                required
-                            >
+                            <option value="Yes">
+                                Yes
+                            </option>
 
-                                <option value="">
-                                    Select
-                                </option>
+                            <option value="No">
+                                No
+                            </option>
 
-                                <option value="Yes">
-                                    Yes
-                                </option>
+                        </select>
 
-                                <option value="No">
-                                    No
-                                </option>
-
-                            </select>
-
+                        <div
+                            class="error-message"
+                            id="leadership_experienceError">
                         </div>
 
                     </div>
@@ -611,69 +741,76 @@
 
                 <div class="form-grid">
 
+
+                    <!-- INTERNSHIP -->
+
                     <div class="form-group">
 
-                        <label>
+                        <label for="internship_experience">
                             Internship Experience
+                            <span class="required">*</span>
                         </label>
 
-                        <div class="select-wrapper">
+                        <select
+                            name="internship_experience"
+                            id="internship_experience"
+                            required
+                        >
 
-                            <span class="input-icon">💼</span>
+                            <option value="">
+                                Select
+                            </option>
 
-                            <select
-                                name="internship_experience"
-                                required
-                            >
+                            <option value="Yes">
+                                Yes
+                            </option>
 
-                                <option value="">
-                                    Select
-                                </option>
+                            <option value="No">
+                                No
+                            </option>
 
-                                <option value="Yes">
-                                    Yes
-                                </option>
+                        </select>
 
-                                <option value="No">
-                                    No
-                                </option>
-
-                            </select>
-
+                        <div
+                            class="error-message"
+                            id="internship_experienceError">
                         </div>
 
                     </div>
 
 
+                    <!-- VOLUNTEER -->
+
                     <div class="form-group">
 
-                        <label>
+                        <label for="volunteer_experience">
                             Volunteer Experience
+                            <span class="required">*</span>
                         </label>
 
-                        <div class="select-wrapper">
+                        <select
+                            name="volunteer_experience"
+                            id="volunteer_experience"
+                            required
+                        >
 
-                            <span class="input-icon">🤝</span>
+                            <option value="">
+                                Select
+                            </option>
 
-                            <select
-                                name="volunteer_experience"
-                                required
-                            >
+                            <option value="Yes">
+                                Yes
+                            </option>
 
-                                <option value="">
-                                    Select
-                                </option>
+                            <option value="No">
+                                No
+                            </option>
 
-                                <option value="Yes">
-                                    Yes
-                                </option>
+                        </select>
 
-                                <option value="No">
-                                    No
-                                </option>
-
-                            </select>
-
+                        <div
+                            class="error-message"
+                            id="volunteer_experienceError">
                         </div>
 
                     </div>
@@ -683,73 +820,80 @@
 
                 <div class="form-grid">
 
+
+                    <!-- RESEARCH -->
+
                     <div class="form-group">
 
-                        <label>
+                        <label for="research_paper">
                             Research Paper
+                            <span class="required">*</span>
                         </label>
 
-                        <div class="select-wrapper">
+                        <select
+                            name="research_paper"
+                            id="research_paper"
+                            required
+                        >
 
-                            <span class="input-icon">🔬</span>
+                            <option value="">
+                                Select
+                            </option>
 
-                            <select
-                                name="research_paper"
-                                required
-                            >
+                            <option value="Yes">
+                                Yes
+                            </option>
 
-                                <option value="">
-                                    Select
-                                </option>
+                            <option value="No">
+                                No
+                            </option>
 
-                                <option value="Yes">
-                                    Yes
-                                </option>
+                        </select>
 
-                                <option value="No">
-                                    No
-                                </option>
-
-                            </select>
-
+                        <div
+                            class="error-message"
+                            id="research_paperError">
                         </div>
 
                     </div>
 
 
+                    <!-- RECOMMENDATION -->
+
                     <div class="form-group">
 
-                        <label>
+                        <label for="recommendation_strength">
                             Recommendation Strength
+                            <span class="required">*</span>
                         </label>
 
-                        <div class="select-wrapper">
+                        <select
+                            name="recommendation_strength"
+                            id="recommendation_strength"
+                            required
+                        >
 
-                            <span class="input-icon">⭐</span>
+                            <option value="">
+                                Select strength
+                            </option>
 
-                            <select
-                                name="recommendation_strength"
-                                required
-                            >
+                            <option value="Weak">
+                                Weak
+                            </option>
 
-                                <option value="">
-                                    Select strength
-                                </option>
+                            <option value="Medium">
+                                Medium
+                            </option>
 
-                                <option value="Weak">
-                                    Weak
-                                </option>
+                            <option value="Strong">
+                                Strong
+                            </option>
 
-                                <option value="Medium">
-                                    Medium
-                                </option>
+                        </select>
 
-                                <option value="Strong">
-                                    Strong
-                                </option>
-
-                            </select>
-
+                        <div
+                            class="error-message"
+                            id="recommendation_strengthError">
                         </div>
 
                     </div>
@@ -764,8 +908,7 @@
                         class="btn-secondary"
                         onclick="prevStep()"
                     >
-                        <span>←</span>
-                        Back
+                        ← Back
                     </button>
 
                     <button
@@ -779,26 +922,32 @@
 
                 </div>
 
-            </section>
+            </div>
 
 
-            <!-- ================= STEP 4 ================= -->
+            <!-- =================================================
+                 STEP 4
+            ================================================== -->
 
-            <section class="step">
+            <div class="step">
 
                 <div class="section-heading">
 
                     <div class="section-icon">
-                        🌍
+                        04
                     </div>
 
                     <div>
-                        <h2>Financial & Study Plans</h2>
+
+                        <h2>
+                            Financial & Study Plans
+                        </h2>
 
                         <p>
-                            You're almost done. Tell us about your financial
-                            situation and study plans.
+                            Almost there! Tell us about your financial situation
+                            and intended study destination.
                         </p>
+
                     </div>
 
                 </div>
@@ -806,77 +955,84 @@
 
                 <div class="form-grid">
 
+
+                    <!-- FAMILY INCOME -->
+
                     <div class="form-group">
 
-                        <label>
+                        <label for="family_income_level">
                             Family Income Level
+                            <span class="required">*</span>
                         </label>
 
-                        <div class="select-wrapper">
+                        <select
+                            name="family_income_level"
+                            id="family_income_level"
+                            required
+                        >
 
-                            <span class="input-icon">💰</span>
+                            <option value="">
+                                Select income level
+                            </option>
 
-                            <select
-                                name="family_income_level"
-                                required
-                            >
+                            <option value="Low">
+                                Low
+                            </option>
 
-                                <option value="">
-                                    Select income level
-                                </option>
+                            <option value="Medium">
+                                Medium
+                            </option>
 
-                                <option value="Low">
-                                    Low
-                                </option>
+                            <option value="High">
+                                High
+                            </option>
 
-                                <option value="Medium">
-                                    Medium
-                                </option>
+                        </select>
 
-                                <option value="High">
-                                    High
-                                </option>
-
-                            </select>
-
+                        <div
+                            class="error-message"
+                            id="family_income_levelError">
                         </div>
 
                     </div>
 
 
+                    <!-- FINANCIAL NEED -->
+
                     <div class="form-group">
 
-                        <label>
+                        <label for="financial_need">
                             Financial Need
+                            <span class="required">*</span>
                         </label>
 
-                        <div class="select-wrapper">
+                        <select
+                            name="financial_need"
+                            id="financial_need"
+                            required
+                        >
 
-                            <span class="input-icon">💳</span>
+                            <option value="">
+                                Select
+                            </option>
 
-                            <select
-                                name="financial_need"
-                                required
-                            >
+                            <option value="Low">
+                                Low
+                            </option>
 
-                                <option value="">
-                                    Select
-                                </option>
+                            <option value="Medium">
+                                Medium
+                            </option>
 
-                                <option value="Low">
-                                    Low
-                                </option>
+                            <option value="High">
+                                High
+                            </option>
 
-                                <option value="Medium">
-                                    Medium
-                                </option>
+                        </select>
 
-                                <option value="High">
-                                    High
-                                </option>
-
-                            </select>
-
+                        <div
+                            class="error-message"
+                            id="financial_needError">
                         </div>
 
                     </div>
@@ -884,51 +1040,54 @@
                 </div>
 
 
+                <!-- STUDY DESTINATION -->
+
                 <div class="form-group">
 
-                    <label>
+                    <label for="study_destination">
                         Intended Study Destination
+                        <span class="required">*</span>
                     </label>
 
-                    <div class="select-wrapper">
+                    <select
+                        name="study_destination"
+                        id="study_destination"
+                        required
+                    >
 
-                        <span class="input-icon">✈️</span>
+                        <option value="">
+                            Select destination
+                        </option>
 
-                        <select
-                            name="study_destination"
-                            required
-                        >
+                        <option value="USA">
+                            USA
+                        </option>
 
-                            <option value="">
-                                Select destination
-                            </option>
+                        <option value="UK">
+                            UK
+                        </option>
 
-                            <option value="USA">
-                                USA
-                            </option>
+                        <option value="Canada">
+                            Canada
+                        </option>
 
-                            <option value="UK">
-                                UK
-                            </option>
+                        <option value="Australia">
+                            Australia
+                        </option>
 
-                            <option value="Canada">
-                                Canada
-                            </option>
+                        <option value="Germany">
+                            Germany
+                        </option>
 
-                            <option value="Australia">
-                                Australia
-                            </option>
+                        <option value="Other">
+                            Other
+                        </option>
 
-                            <option value="Germany">
-                                Germany
-                            </option>
+                    </select>
 
-                            <option value="Other">
-                                Other
-                            </option>
-
-                        </select>
-
+                    <div
+                        class="error-message"
+                        id="study_destinationError">
                     </div>
 
                 </div>
@@ -942,11 +1101,12 @@
 
                     <div>
 
-                        <strong>You're all set!</strong>
+                        <strong>
+                            Ready to assess your eligibility?
+                        </strong>
 
                         <p>
-                            Review your answers and submit the assessment
-                            to receive your scholarship eligibility result.
+                            Please review your information before submitting the assessment.
                         </p>
 
                     </div>
@@ -961,8 +1121,7 @@
                         class="btn-secondary"
                         onclick="prevStep()"
                     >
-                        <span>←</span>
-                        Back
+                        ← Back
                     </button>
 
                     <button
@@ -976,7 +1135,8 @@
 
                 </div>
 
-            </section>
+            </div>
+
 
         </form>
 
@@ -985,16 +1145,14 @@
 </main>
 
 
-<!-- ================= FOOTER ================= -->
-
 <footer>
 
     <div class="footer-brand">
-        🎓 SmartScholar
+        SmartScholar
     </div>
 
     <p>
-        Scholarship Eligibility Assessment
+        Scholarship Eligibility Predictor
     </p>
 
     <span>
@@ -1004,7 +1162,8 @@
 </footer>
 
 
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
+
 </html>
