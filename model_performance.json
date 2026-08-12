@@ -1,10 +1,21 @@
 {
-    "accuracy": 85.0,
-    "precision": 83.78,
+    "best_model": "Random Forest",
+    "selection_metric": "F1 Score",
+    "accuracy": 86.0,
+    "precision": 86.11,
     "recall": 77.5,
-    "f1_score": 80.52,
+    "f1_score": 81.58,
     "training_samples": 400,
     "testing_samples": 100,
     "dataset_size": 500,
-    "algorithm": "Random Forest Classifier"
+    "models_evaluated": [
+        "Random Forest",
+        "Decision Tree",
+        "Logistic Regression (L2 Regularization)"
+    ],
+    "regularization": "L2 Regularization in Logistic Regression",
+    "logistic_regression_parameters": {
+        "penalty": "l2",
+        "C": 1.0
+    }
 }

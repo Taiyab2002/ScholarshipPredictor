@@ -1,0 +1,4 @@
+rank,model,accuracy,precision,recall,f1_score
+1,Random Forest,86.0,86.11,77.5,81.58
+2,Decision Tree,85.0,82.05,80.0,81.01
+3,Logistic Regression (L2 Regularization),83.0,79.49,77.5,78.48

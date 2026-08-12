@@ -1,130 +1,130 @@
 [
     {
         "feature":"numerical__cgpa",
-        "importance":0.2399733226
+        "importance":0.2810139783
     },
     {
         "feature":"numerical__academic_percentage",
-        "importance":0.2030467568
+        "importance":0.2231736572
     },
     {
         "feature":"numerical__ielts_score",
-        "importance":0.1065651843
+        "importance":0.1098922194
     },
     {
         "feature":"numerical__age",
-        "importance":0.0452091713
+        "importance":0.0358274612
     },
     {
         "feature":"categorical__english_proficiency_Excellent",
-        "importance":0.0255874103
-    },
-    {
-        "feature":"categorical__financial_need_High",
-        "importance":0.0203301198
-    },
-    {
-        "feature":"categorical__extracurricular_activities_Low",
-        "importance":0.0196404145
+        "importance":0.0317811478
     },
     {
         "feature":"categorical__leadership_experience_No",
-        "importance":0.0174674358
+        "importance":0.0196287663
     },
     {
-        "feature":"categorical__internship_experience_Yes",
-        "importance":0.0169186058
-    },
-    {
-        "feature":"categorical__leadership_experience_Yes",
-        "importance":0.0160921194
-    },
-    {
-        "feature":"categorical__volunteer_experience_No",
-        "importance":0.0160208625
-    },
-    {
-        "feature":"categorical__financial_need_Low",
-        "importance":0.0158136135
-    },
-    {
-        "feature":"categorical__research_paper_Yes",
-        "importance":0.0157576013
-    },
-    {
-        "feature":"categorical__internship_experience_No",
-        "importance":0.0156936744
-    },
-    {
-        "feature":"categorical__research_paper_No",
-        "importance":0.0153249689
+        "feature":"categorical__financial_need_High",
+        "importance":0.018924625
     },
     {
         "feature":"categorical__volunteer_experience_Yes",
-        "importance":0.0149664626
+        "importance":0.0146314605
     },
     {
-        "feature":"categorical__family_income_level_Middle",
-        "importance":0.0146874536
+        "feature":"categorical__financial_need_Low",
+        "importance":0.0144853147
     },
     {
-        "feature":"categorical__study_destination_Australia",
-        "importance":0.0145521632
+        "feature":"categorical__extracurricular_activities_Low",
+        "importance":0.014397566
     },
     {
-        "feature":"categorical__study_destination_Canada",
-        "importance":0.0143068326
+        "feature":"categorical__leadership_experience_Yes",
+        "importance":0.0143211809
     },
     {
-        "feature":"categorical__extracurricular_activities_Medium",
-        "importance":0.0142789086
+        "feature":"categorical__internship_experience_No",
+        "importance":0.0142604179
     },
     {
-        "feature":"categorical__recommendation_strength_Moderate",
-        "importance":0.0137178881
+        "feature":"categorical__volunteer_experience_No",
+        "importance":0.013917134
+    },
+    {
+        "feature":"categorical__research_paper_No",
+        "importance":0.0138486942
+    },
+    {
+        "feature":"categorical__internship_experience_Yes",
+        "importance":0.0137395958
+    },
+    {
+        "feature":"categorical__research_paper_Yes",
+        "importance":0.0136197038
     },
     {
         "feature":"categorical__english_proficiency_Good",
-        "importance":0.0134690334
+        "importance":0.0122042306
     },
     {
         "feature":"categorical__financial_need_Medium",
-        "importance":0.0131016131
+        "importance":0.0120549003
     },
     {
-        "feature":"categorical__family_income_level_High",
-        "importance":0.0122995375
+        "feature":"categorical__study_destination_Australia",
+        "importance":0.0119514793
     },
     {
-        "feature":"categorical__study_destination_Germany",
-        "importance":0.0118553006
+        "feature":"categorical__study_destination_Canada",
+        "importance":0.0114113483
     },
     {
-        "feature":"categorical__study_destination_USA",
-        "importance":0.0117654715
+        "feature":"categorical__extracurricular_activities_Medium",
+        "importance":0.0113006645
+    },
+    {
+        "feature":"categorical__recommendation_strength_Moderate",
+        "importance":0.0110550678
     },
     {
         "feature":"categorical__recommendation_strength_Strong",
-        "importance":0.0116207016
+        "importance":0.0103134683
     },
     {
-        "feature":"categorical__family_income_level_Low",
-        "importance":0.0115675776
-    },
-    {
-        "feature":"categorical__study_destination_UK",
-        "importance":0.0111755548
-    },
-    {
-        "feature":"categorical__extracurricular_activities_High",
-        "importance":0.0100771906
+        "feature":"categorical__study_destination_Germany",
+        "importance":0.0103096868
     },
     {
         "feature":"categorical__english_proficiency_Average",
-        "importance":0.0097027373
+        "importance":0.0093959779
+    },
+    {
+        "feature":"categorical__family_income_level_High",
+        "importance":0.0090038911
+    },
+    {
+        "feature":"categorical__family_income_level_Middle",
+        "importance":0.0088800704
+    },
+    {
+        "feature":"categorical__family_income_level_Low",
+        "importance":0.0082017608
+    },
+    {
+        "feature":"categorical__study_destination_UK",
+        "importance":0.0076586929
+    },
+    {
+        "feature":"categorical__study_destination_USA",
+        "importance":0.0076034021
+    },
+    {
+        "feature":"categorical__extracurricular_activities_High",
+        "importance":0.0064421345
     },
     {
         "feature":"categorical__recommendation_strength_Weak",
-        "importance":0.0074143121
+        "importance":0.0047503016
     }
 ]
